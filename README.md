@@ -15,7 +15,7 @@ The system follows a decoupled micro-processing architecture:
 2.  **Crawler (TypeScript/Playwright)**: Headless workers communicating via CDP (Chrome DevTools Protocol) to bypass bot detection and render dynamic content.
 3.  **Data Engine (Rust)**: A highly optimized binary that cleans HTML, generates embeddings, and writes directly to **LanceDB** formats on S3 without Python overhead.
 
-## 🛠 Tech Stack & Design Choices
+## Tech Stack & Design Choices
 
 * **Ray on Kubernetes**: Chosen over static K8s Jobs to allow dynamic task scheduling and actor-based state management for politeness/rate-limiting across domains.
 * **Playwright (TS)**: selected for its robust CDP integration, allowing us to inspect network traffic and modify browser fingerprints on the fly.
