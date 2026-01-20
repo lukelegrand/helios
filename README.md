@@ -7,7 +7,7 @@
 
 **Helios** is a massive-scale distributed web crawler and indexing engine designed to ingest 100M+ pages/day. It leverages **Ray** for distributed orchestration on Kubernetes, **TypeScript/Playwright** for high-fidelity rendering (handling dynamic JS/anti-bot measures), and **Rust/Lance** for high-performance vector storage.
 
-## 🚀 Architecture
+## Architecture
 
 The system follows a decoupled micro-processing architecture:
 
@@ -21,13 +21,13 @@ The system follows a decoupled micro-processing architecture:
 * **Playwright (TS)**: selected for its robust CDP integration, allowing us to inspect network traffic and modify browser fingerprints on the fly.
 * **Rust & Lance**: We bypass standard Python bottlenecks by performing HTML parsing and vector disk I/O strictly in Rust. Lance provides columnar storage optimized for random access and vector search.
 
-## ⚡ Performance
+## Performance
 
 * **Concurrency**: Capable of scaling to 10k+ concurrent browser contexts.
 * **Storage**: Direct-to-S3 writes using Arrow IPC/Lance for zero-copy data persistence.
 * **Politeness**: Distributed semaphore implementation to ensure domain rate limits are respected globally.
 
-## 📦 Installation & Deployment
+## Installation & Deployment
 
 ### Prerequisites
 * Kubernetes Cluster (EKS/GKE)
