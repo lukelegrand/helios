@@ -1,0 +1,37 @@
+apiVersion: ray.io/v1
+kind: RayCluster
+metadata:
+  name: helios-cluster
+spec:
+  headGroupSpec:
+    serviceType: ClusterIP
+    rayStartParams:
+      dashboard-host: '0.0.0.0'
+    template:
+      spec:
+        containers:
+        - name: ray-head
+          image: your-repo/helios-worker:latest
+          resources:
+            limits:
+              cpu: "2"
+              memory: "8Gi"
+  workerGroupSpecs:
+  - replicas: 5 # <--- THE SCALING FACTOR
+    minReplicas: 1
+    maxReplicas: 1000
+    groupName: small-group
+    rayStartParams: {}
+    template:
+      spec:
+        containers:
+        - name: ray-worker
+          image: your-repo/helios-worker:latest
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh","-c","ray stop"]
+          resources:
+            limits:
+              cpu: "4"
+              memory: "16Gi"

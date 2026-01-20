@@ -1,0 +1,22 @@
+[package]
+name = "helios-engine"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Tokio is the async runtime (like asyncio in Python)
+tokio = { version = "1.32", features = ["full", "rt-multi-thread"] }
+
+# Lance is the vector database format
+lance = "0.9"
+
+# Arrow arrays are the standard memory format for data science
+arrow-array = "48.0"
+arrow-schema = "48.0"
+
+# Serde is for serializing/deserializing JSON
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Anyhow is for easy error handling
+anyhow = "1.0"
