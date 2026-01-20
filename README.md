@@ -20,7 +20,7 @@ The system follows a decoupled micro-processing architecture:
 - **Ray on Kubernetes**: Chosen over static K8s Jobs to allow dynamic task scheduling and actor-based state management for politeness/rate-limiting across domains.
 - **Playwright (TS)**: selected for its robust CDP integration, allowing us to inspect network traffic and modify browser fingerprints on the fly.
 - **Rust & Lance**: We bypass standard Python bottlenecks by performing HTML parsing and vector disk I/O strictly in Rust. Lance provides columnar storage optimized for random access and vector search.
-
+ 
 ## Performance
 
 - **Concurrency**: Capable of scaling to 10k+ concurrent browser contexts.
